@@ -3,57 +3,48 @@ import{ToastContainer} from 'react-toastify'
 import React from 'react'
 import { useState } from 'react';
 
+
 function Login() {
 
-  const {ResisterInfo, setResisterInfo} = useState({
-    email: " ",
-    password: " "
-  })
+  const[email] =useState(' ')
+  const[password] =useState(' ')
 
-  const handleChange = (e)=>{
-    const { name, value} =e.target;
-    console.log(name, value);
-    const copyResisterInfo = {...ResisterInfo};
-    copyResisterInfo[name] =value;
-    setResisterInfo(copyResisterInfo);
-  }
-
-  const handleResister = (e) =>{
+  function Login(e){
     e.preventDefault();
-    const {name, email} = ResisterInfo;
-    if(name || email){
-      alert("All filed are mandatory, Please fill the details")
+    if(email || password)
+    {
+      alert("All filed are mandatory, Please fill details")
     }
     else{
       alert("Registration successful")
-    } 
+    }
   }
 
   return (
     <div className='container'>
     <h1>Login</h1>
-    <form onSubmit={handleResister}>
+    <form>
       <div>
         <label htmlFor='email'>email</label>
         <input
-        onChange={handleChange}
+        
         type='email'
         name='email'
         placeholder='Enter your email...'
-        //value={ResisterInfo.email}
         />
       </div>
       <div>
         <label htmlFor='password'>Password</label>
         <input
-        onChange={handleChange}
+    
         type='password'
         name='password'
         placeholder='Enter your password...'
-        //value={ResisterInfo.password}
         />
       </div> 
-      <button type ='submit'>Login</button>
+
+      <button type ='submit'> Login</button>
+      <Link to ="/Home" Home> </Link>
       <span>
           Don't have an account?
         <Link to="/Resister">Resister</Link>

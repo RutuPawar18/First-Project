@@ -1,77 +1,62 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom'
 import{ToastContainer} from 'react-toastify'
+import React from 'react'
+import { useState } from 'react';
 
 function Resister() {
 
-  const {ResisterInfo, setResisterInfo} = useState({
-    name: " ",
-    email: " ",
-    password: " "
-  })
+  const[name] =useState(' ')
+  const[email] =useState(' ')
+  const[password] =useState(' ')
 
-  const handleChange = (e)=>{
-    const { name, value} =e.target;
-    console.log(name, value);
-    const copyResisterInfo = {...ResisterInfo};
-    copyResisterInfo[name] =value;
-    setResisterInfo(copyResisterInfo);
-  }
-
-  const handleResister = (e) =>{
+  function Resister(e){
     e.preventDefault();
-    const {name, email, password} = ResisterInfo;
-    if(name || email || password){
+    if(name || email || password)
+    {
       alert("All filed are mandatory, Please fill details")
     }
-    else{
+    else{  
       alert("Registration successful")
-    } 
-  }
-
+    }
+  }  
+  
   return (
     <div className='container'>
-      <h1>Resister</h1>
-      <form onSubmit={handleResister}>
-        <div>
-          <label htmlFor='name'>Name</label>
-          <input
-          onChange={handleChange}
-          type='text'
-          name='name'
-          autoFocus
-          placeholder='Enter your name...'
-         // value={ResisterInfo.name}
-          />
-        </div>
-        <div>
-          <label htmlFor='email'>Name</label>
-          <input
-          onChange={handleChange}
-          type='email'
-          name='email'
-          placeholder='Enter your email...'
-          //value={ResisterInfo.email}
-          />
-        </div>
-        <div>
-          <label htmlFor='password'>Password</label>
-          <input
-          onChange={handleChange}
-          type='password'
-          name='password'
-          placeholder='Enter your password...'
-          //value={ResisterInfo.password}
-          />
-        </div> 
-        <button type ='submit'>Resister</button>
-        <span>
-            Already have an account?
-          <Link to="/login">Login</Link>
-        </span>
-      </form>
-      <ToastContainer/>
-    </div>
+    <h1>Resister</h1>
+    <form>
+    <div>
+        <label htmlFor='name'>Name</label>
+        <input
+        type='name'
+        name='text'
+        placeholder='Enter your name...'
+        />
+      </div> 
+      <div>
+        <label htmlFor='email'>email</label>
+        <input
+        type='email'
+        name='email'
+        placeholder='Enter your email...'
+        />
+      </div>
+      <div>
+        <label htmlFor='password'>Password</label>
+        <input
+        type='password'
+        name='password'
+        placeholder='Enter your password...'
+        />
+      </div> 
+
+      <button type ='submit' > Resister</button>
+      <span>
+          Already have an account?
+        <Link to="/Login">Login</Link>
+      </span>
+    </form>
+    <ToastContainer/>
+  </div>
   )
 }
 
